@@ -1,36 +1,28 @@
-// src/App.tsx
-import { PostCard, PostCardSkeleton } from "@/entities/post";
+// App.tsx에서 테스트
+import { formatDate, formatRelativeTime, formatNumber } from "@/shared/lib";
+import { Button } from "@/shared/ui";
+import { useLocalStorage, useIsMobile } from "@/shared/hooks";
+import { CATEGORIES } from "@/shared/config";
 
 function App() {
-  const mockPost = {
-    id: "1",
-    title: "FSD 아키텍처 완벽 가이드",
-    excerpt: "Feature-Sliced Design을 실전 프로젝트에 적용하는 방법",
-    coverImage: "https://picsum.photos/800/400?random=1",
-    author: {
-      name: "김개발",
-      avatar: "https://i.pravatar.cc/150?img=1",
-    },
-    category: "Architecture",
-    publishedAt: new Date(),
-    likesCount: 42,
-    commentsCount: 12,
-  };
+  const [theme, setTheme] = useLocalStorage("theme", "light");
+  const isMobile = useIsMobile();
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-4xl mx-auto space-y-8">
-        <h1 className="text-3xl font-bold">Entities 테스트</h1>
+    <div className="p-8">
+      <h1>Shared 레이어 테스트</h1>
 
-        <section>
-          <h2 className="text-xl font-semibold mb-4">PostCard</h2>
-          <PostCard post={mockPost} />
-        </section>
+      <div className="space-y-4">
+        <p>오늘: {formatDate(new Date())}</p>
+        <p>1시간 전: {formatRelativeTime(new Date(Date.now() - 3600000))}</p>
+        <p>조회수: {formatNumber(12500)}</p>
+        <p>테마: {theme}</p>
+        <p>모바일: {isMobile ? "Yes" : "No"}</p>
+        <p>카테고리: {CATEGORIES.join(", ")}</p>
 
-        <section>
-          <h2 className="text-xl font-semibold mb-4">Loading State</h2>
-          <PostCardSkeleton />
-        </section>
+        <Button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+          테마 변경
+        </Button>
       </div>
     </div>
   );
