@@ -1,7 +1,7 @@
 // src/App.tsx
-import { AppProviders } from './app/providers'
-import { ErrorBoundary } from './app/providers/ErrorBoundary'
-import './index.css'
+import { AppProviders } from './providers'
+import { ErrorBoundary } from './providers/ErrorBoundary'
+import './styles/index.css'
 
 function App() {
   return (
@@ -10,5 +10,4 @@ function App() {
     </ErrorBoundary>
   )
 }
-
 export default App
