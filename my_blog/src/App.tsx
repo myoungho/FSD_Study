@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Button } from "@/components/ui/button";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
+      <div className="bg-white p-8 rounded-lg shadow-2xl max-w-md w-full">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">
+          FSD 블로그 프로젝트
+        </h1>
+        <p className="text-gray-600 mb-6">Shadcn/ui 컴포넌트 테스트</p>
+
+        <div className="space-y-3">
+          <Button className="w-full">기본 버튼</Button>
+          <Button variant="secondary" className="w-full">
+            보조 버튼
+          </Button>
+          <Button variant="outline" className="w-full">
+            아웃라인 버튼
+          </Button>
+          <Button variant="ghost" className="w-full">
+            고스트 버튼
+          </Button>
+          <Button variant="destructive" className="w-full">
+            삭제 버튼
+          </Button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
